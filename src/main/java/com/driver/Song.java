@@ -5,12 +5,24 @@ public class Song {
     private int length;
     private int likes;
 
+    private String albumName;
+
+
     public Song(){
 
     }
 
-    public Song(String title, int length){
+    public String getAlbumName() {
+        return albumName;
+    }
+
+    public void setAlbumName(String albumName) {
+        this.albumName = albumName;
+    }
+
+    public Song(String title, String albumName, int length){
         this.title = title;
+        this.albumName = albumName;
         this.length = length;
     }
 

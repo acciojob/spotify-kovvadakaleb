@@ -7,12 +7,23 @@ public class Album {
     private String title;
     private Date releaseDate;
 
+    private String artist;
+
     public Album(){
 
     }
 
-    public Album(String title){
+    public String getArtist() {
+        return artist;
+    }
+
+    public void setArtist(String artist) {
+        this.artist = artist;
+    }
+
+    public Album(String title, String artist){
         this.title = title;
+        this.artist = artist;
         this.releaseDate = new Date();
     }
 
