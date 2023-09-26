@@ -132,6 +132,18 @@ public class SpotifyRepository {
             }
         }
         playlistSongMap.put(playlist,newlist);
+
+
+        if(userPlaylistMap.containsKey(user1)){
+            List<Playlist> oldlist = userPlaylistMap.get(user1);
+            oldlist.add(playlist);
+            userPlaylistMap.put(user1,oldlist);
+        }
+        else{
+            List<Playlist> newList1 = new ArrayList<>();
+            newList1.add(playlist);
+            userPlaylistMap.put(user1,newList1);
+        }
         return playlist;
     }
 
@@ -160,6 +172,17 @@ public class SpotifyRepository {
             }
         }
         playlistSongMap.put(playlist,newlist);
+
+        if(userPlaylistMap.containsKey(user1)){
+            List<Playlist> oldlist = userPlaylistMap.get(user1);
+            oldlist.add(playlist);
+            userPlaylistMap.put(user1,oldlist);
+        }
+        else{
+            List<Playlist> newList1 = new ArrayList<>();
+            newList1.add(playlist);
+            userPlaylistMap.put(user1,newList1);
+        }
         return playlist;
     }
 
@@ -240,16 +263,47 @@ public class SpotifyRepository {
             songLikeMap.put(song1,list);
             song1.setLikes(1);
         }
+        Artist artist = null;
+        for(Map.Entry<Artist,List<Album>> entry : artistAlbumMap.entrySet()){
+           List<Album> albums = entry.getValue();
+          for(Album album : albums){
+              if(album.getTitle().equals(song1.getAlbumName())){
+                  artist = entry.getKey();
+                  break;
+              }
+            }
+          if(artist!=null){
+              break;
+          }
+        }
+       int likes = artist.getLikes();
+        artist.setLikes(likes++);
+
+
         return song1;
     }
 
     public String mostPopularArtist() {
-         Artist artist =new Artist("kaleb");
-         return artist.getName();
+         Artist artist1 = null;
+         int most = Integer.MIN_VALUE;
+         for(Artist artist : artists){
+             if(artist.getLikes()>most){
+                 most = artist.getLikes();
+                 artist1 = artist;
+             }
+         }
+         return artist1.getName();
     }
 
     public String mostPopularSong() {
-     Song song = new Song("kesariya","Arjit",5);
-     return song.getTitle();
+      Song song1 = null;
+      int most = Integer.MIN_VALUE;
+     for(Song song : songs){
+         if(song.getLikes()>most){
+             most = song.getLikes();
+             song1 = song;
+         }
+     }
+     return song1.getTitle();
     }
 }
