@@ -7,6 +7,15 @@ public class Song {
 
     private String albumName;
 
+    @Override
+    public String toString() {
+        return "Song{" +
+                "title='" + title + '\'' +
+                ", length=" + length +
+                ", likes=" + likes +
+                ", albumName='" + albumName + '\'' +
+                '}';
+    }
 
     public Song(){
 

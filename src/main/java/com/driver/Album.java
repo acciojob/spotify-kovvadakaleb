@@ -9,6 +9,15 @@ public class Album {
 
     private String artist;
 
+    @Override
+    public String toString() {
+        return "Album{" +
+                "title='" + title + '\'' +
+                ", releaseDate=" + releaseDate +
+                ", artist='" + artist + '\'' +
+                '}';
+    }
+
     public Album(){
 
     }

@@ -5,6 +5,13 @@ import java.util.List;
 public class Playlist {
     private String title;
 
+    @Override
+    public String toString() {
+        return "Playlist{" +
+                "title='" + title + '\'' +
+                '}';
+    }
+
     public Playlist(){
 
     }
